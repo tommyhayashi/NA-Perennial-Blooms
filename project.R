@@ -67,24 +67,25 @@ floraRangeBloom <- BIEN_ranges_load_species(mostPopularSpeciesBeginning)
 
 tmap_mode("plot")
 tmap_mode("view")
-floraRangeBegin <-  tm_shape(floraRangeBloom) + tm_polygons(alpha = 0.8)  + tm_fill(palette = "Accent") + tm_layout(title = "Occurrences of Flowering Perennials in NA", legend.show = "TRUE", frame = TRUE)  + tm_basemap()
-  #+tm_view(view.legend.position = c("LEFT", "BOTTOM")) #attempted to add a legend to no avail
+perennialRange <-  tm_shape(floraRangeBloom) + tm_polygons("MAP_COLORS", alpha = 0.66)  + tm_fill() + tm_layout(title = "Occurrences of Flowering Perennials in NA", legend.show = TRUE, frame = TRUE)  + tm_basemap()
+   #attempted to add a legend to no avail
 
 leaflet("World") 
 
-floraRangeBegin
+perennialRange
 class(floraRange)
 
-#coverting new tmap into a raster restricted to contintental NA then comparing the bloom data with climate data
+#coverting new tmap into a raster restricted to contintental NA then comparing the bloom data with climate data through layered mapping
 annualFlowering <- rasterize(floraRangeBloom, meanTempAnnual)
-USPrecipBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1, title = "Species") +  tm_shape(precipAnnual) + tm_raster(alpha = 0.6, title = "Mean Precipitation 30 year normal") + tm_basemap() 
+USPrecipBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1, title = "Species") +  tm_shape(precipAnnual) + tm_raster(alpha = 0.6, title = "Mean Precipitation 30 year normals", , palette = "Blues") + tm_basemap() 
  #attempt to added legend positions and accurate titles      # , view.legend.position = c("LEFT", "BOTTOM"), main = "Species"  ... , view.legend.position = c("LEFT", "BOTTOM"), main = "Annual Temperatures"
 tmap_mode("plot")
 USPrecipBlooms
 
-USTempBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1, title = "Species") + tm_shape(meanTempAnnual) + tm_raster(alpha = 0.6, title = "Mean Temperature 30 year normal") + tm_basemap()
+USTempBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1, title = "Species") + tm_shape(meanTempAnnual) + tm_raster(alpha = 0.33, title = "Mean Temperature 30 year normals (Celsius)") + tm_basemap()
 USTempBlooms
 
+tmaptools::palette_explorer()
 
 
 
@@ -206,20 +207,21 @@ plot(floweringJune)
 annualFlowering <- rasterize(floraRangeBloom, meanTempAnnual)
 plot(annualFlowering)
 
-layout(matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE) 
-plot(tempApril, main = "April Temp", cex = 0.25, axes = FALSE, box = FALSE) 
-plot(precipApril, main = "April Precip", cex = 0.25, axes= FALSE, box = FALSE)
-plot(tempMay, main = "May Temp", cex = 0.25, axes = FALSE, box = FALSE)
-plot(precipMay, main = "May Precip",  cex = 0.25, axes= FALSE, box = FALSE)
-plot(tempJune, main = "June Temp", cex = 0.25, axes = FALSE, box = FALSE)
-plot(precipJune, main = "June Precip", cex = 0.25, axes= FALSE, box = FALSE )
+#plotting as matrices to be able to visually compare and it looks pretty sweet
+layout(matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE)) 
+plot(tempApril, main = "April Temp", cex = 1, axes = FALSE, box = FALSE) 
+plot(precipApril, main = "April Precip", cex = 1, axes= FALSE, box = FALSE)
+plot(tempMay, main = "May Temp", cex = 1, axes = FALSE, box = FALSE)
+plot(precipMay, main = "May Precip",  cex = 1, axes= FALSE, box = FALSE)
+plot(tempJune, main = "June Temp", cex = 1, axes = FALSE, box = FALSE)
+plot(precipJune, main = "June Precip", cex = 1, axes= FALSE, box = FALSE )
 
 
 
 
 layout(matrix(1:2, nrow = 2, ncol = 1, byrow = TRUE))
-plot(precipAnnual, main = "Annual Precipitation", axes = FALSE, box = FALSE)
-plot(meanTempAnnual, main = "Annual Temperature", axes = FALSE, box = FALSE)
+plot(precipAnnual, main = "Annual Precipitation", axes = FALSE, box = FALSE, , cex = 0.5)
+plot(meanTempAnnual, main = "Annual Temperature", axes = FALSE, box = FALSE, , cex = 0.5)
 
 
 
