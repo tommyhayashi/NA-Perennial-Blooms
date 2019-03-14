@@ -12,6 +12,10 @@ library(mapproj)
 library(rgeos)
 library(car)
 
+
+### add comments explaining what functions do and why I use them
+
+
 #####
 vignette("BIEN")
 vignette("tmap-getstarted")
@@ -50,11 +54,15 @@ FloraBloomStart
 #### plotting the frequency of bloom occurences vs months and data analysis -> making figures -----------------------------------------------------------------------
     #figure keeps looking bad
 bienBlooms <- BIEN_trait_traitbyspecies(usList$scrubbed_species_binomial,"plant flowering begin")
-bienBlooms %>% add_count(scrubbed_species_binomial)
-hist(as.numeric(bienBlooms$trait_value), bienBooms$scrubbed_species_binomial, xlab = "", ylab = "")  #[WIP]
+bienBlooms %>% add_count(scrubbed_species_binomial) 
+plot(bienBlooms$n, bienBlooms$trait_value)
 
-plot(bienBlooms$id, bienBlooms$trait_value, xlab = "Species ID", ylab = "Bloom Month", main = "Flowering Distributions Throughout the Year")
+#[failed] plot(as.numeric(bienBlooms$trait_value), bienBooms$scrubbed_species_binomial, xlab = "", ylab = "")  #[WIP]
 
+#[gross] plot(bienBlooms$id, bienBlooms$trait_value, xlab = "US Species ID", ylab = "Bloom Month", main = paste("Flowering Distributions Throughout the Year"), xlim = 1)
+
+bloomFrequency <- hist(as.numeric(bienBlooms$trait_value), xlab = "Month of Bloom", main = "Frequency of Blooming North American Species")
+bloomFrequency
 
 #### Downloaded range maps and getting species data and then plotting!  ------------------------------------------
 floraRangeBloom <- BIEN_ranges_load_species(mostPopularSpeciesBeginning) 
@@ -73,12 +81,13 @@ perennialRange <-  tm_shape(floraRangeBloom) + tm_polygons("MAP_COLORS", alpha =
 leaflet("World") 
 
 perennialRange
-class(floraRange)
+
+ class(floraRange)
 
 #coverting new tmap into a raster restricted to contintental NA then comparing the bloom data with climate data through layered mapping
 annualFlowering <- rasterize(floraRangeBloom, meanTempAnnual)
 USPrecipBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1, title = "Species") +  tm_shape(precipAnnual) + tm_raster(alpha = 0.6, title = "Mean Precipitation 30 year normals", , palette = "Blues") + tm_basemap() 
- #attempt to added legend positions and accurate titles      # , view.legend.position = c("LEFT", "BOTTOM"), main = "Species"  ... , view.legend.position = c("LEFT", "BOTTOM"), main = "Annual Temperatures"
+ #attempt to added legend positions and accurate titles [SCRAPPED]     # , view.legend.position = c("LEFT", "BOTTOM"), main = "Species"  ... , view.legend.position = c("LEFT", "BOTTOM"), main = "Annual Temperatures"
 tmap_mode("plot")
 USPrecipBlooms
 
@@ -87,8 +96,26 @@ USTempBlooms
 
 tmaptools::palette_explorer()
 
+tempPerennial <- tm_shape(meanTempAnnual) + tm_raster(title = "Mean Temperature 30 year normals (Celsius)") + tm_shape(floraRangeBloom) + tm_polygons(alpha = 0.5, "MAP_COLORS") + tm_basemap()
+tempPerennial
 
+precipPerennial <- tm_shape(precipAnnual) + tm_raster(title = "Mean Precipitation 30 year normals ") + tm_shape(floraRangeBloom) + tm_polygons(alpha = 0.5, "MAP_COLORS") + tm_basemap()
+precipPerennial
 
+bloomTempPerennial <- tm_shape(floraRangeBloom) + tm_polygons("MAP_COLORS") + tm_shape(tempApril) + tm_raster(title = "Mean Temperature 30 year normals") + tm_shape(tempMay) + tm_raster(title = "Mean Temperature 30 year normals") + tm_shape(tempJune) + tm_raster(title = "Mean Temperature 30 year normals") + tm_basemap()
+bloomTempPerennial
+
+#attempt to loop through the layers of species ranges in order independently represent each range layer
+tmap_mode("view")
+speciesLayers ->  for(i in 1:4){
+  tm_shape(floraRangeBloom@polygons[i]) + tm_polygons()+}
+ tm_basemap()
+
+ #trying to differentiate the layers
+ perennialLayers <-  tm_shape(floraRangeBloom) + tm_polygons() + tm_facets(~floraRangeBloom@polygons) + tm_layout(title = "Occurrences of Flowering Perennials in NA", legend.show = TRUE, frame = TRUE)  + tm_basemap()
+ perennialLayers
+ 
+ 
 #MayUSBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1) + tm_shape(precipMay) + tm_raster(alpha = 0.3) + tm_shape(tempMay) + tm_raster(alpha = 0.4) + tm_basemap()  
 #MayUSBlooms
 
@@ -209,12 +236,12 @@ plot(annualFlowering)
 
 #plotting as matrices to be able to visually compare and it looks pretty sweet
 layout(matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE)) 
-plot(tempApril, main = "April Temp", cex = 1, axes = FALSE, box = FALSE) 
-plot(precipApril, main = "April Precip", cex = 1, axes= FALSE, box = FALSE)
-plot(tempMay, main = "May Temp", cex = 1, axes = FALSE, box = FALSE)
-plot(precipMay, main = "May Precip",  cex = 1, axes= FALSE, box = FALSE)
-plot(tempJune, main = "June Temp", cex = 1, axes = FALSE, box = FALSE)
-plot(precipJune, main = "June Precip", cex = 1, axes= FALSE, box = FALSE )
+plot(tempApril, main = "April Temperatures", cex = 1, axes = FALSE, box = FALSE) 
+plot(precipApril, main = "April Precipitation", cex = 1, axes= FALSE, box = FALSE)
+plot(tempMay, main = "May Temperatures", cex = 1, axes = FALSE, box = FALSE)
+plot(precipMay, main = "May Precipitation",  cex = 1, axes= FALSE, box = FALSE)
+plot(tempJune, main = "June Temperatures", cex = 1, axes = FALSE, box = FALSE)
+plot(precipJune, main = "June Precipitation", cex = 1, axes= FALSE, box = FALSE )
 
 
 
