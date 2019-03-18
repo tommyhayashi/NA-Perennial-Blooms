@@ -1,4 +1,4 @@
-# Analysis of Perennial Blooms in North America
+﻿# Analysis of Perennial Blooms in North America
 
 [Introduction]
 
@@ -23,12 +23,13 @@ Using the [Botanical Information and Ecology Network](http://bien.nceas.ucsb.edu
 
 1. [Perennial Ranges]
 
-2. [Rasterized Species Ranges and Annual Temperature Data]
+2. [Rasterized Species Ranges and Annual Temperature Data](https://tommyhayashi.github.io/PerennialBlooms/RasterRangeTemperature30yearNormals.jpeg)
 
-3. [Rasterized Species Ranges and Annual Percipitation Data]
+3. [Rasterized Species Ranges and Annual Percipitation Data](https://tommyhayashi.github.io/PerennialBlooms/RasterRangePrecipitation30yearNormals.jpeg)
 
 -Figures-
 
-1. [Matrix of Percipitation and Temperature Changes during Bloom Season]
+1. [Histogram depicting frequencies of Blooms in North American Species](https://tommyhayashi.github.io/PerennialBlooms/BloomFrequency.jpeg)
 
-2. [Histogram depicting frequencies of Blooms in North American Species]
+2. [Matrix of Percipitation and Temperature Changes during Bloom Season](https://tommyhayashi.github.io/PerennialBlooms/BloomMonthsTemperaturePrecipitation30yearnormals.jpeg)
+
