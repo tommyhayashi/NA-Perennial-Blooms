@@ -27,51 +27,49 @@ vignette("leaflet")
 
 ##### Selecting species lists for California for later joining-----------------------------------------------------
 
-usList <- BIEN_list_country(country = "United States")
+usList <- BIEN_list_country(country = "United States") #specifically filters which species have ranges intersecting with the United States
 
 
 
-###### Downloading all flowering species data, begin date and duration, for species in California ---------------------------------------------
+###### Downloading all flowering species data, begin date and duration, for species in California  ---------------------------------------------
+#[Realized that bloom duration data has relatively few recordings and last minute decided to exclude from study]
 
-trait_obs <-BIEN_trait_traits_per_species() 
-flower_counts <-trait_obs %>% filter(trait_name == c("plant flowering duration", "plant flowering begin"))
+trait_obs <-BIEN_trait_traits_per_species()  #downloading all trait data 
+flower_counts <-trait_obs %>% filter(trait_name == c("plant flowering duration", "plant flowering begin")) #filtering trait data to be exclusively flowering bloom and duration
 
 
-#filtering for the most prominent species, top 5 species with the most bloom beginning data and bloom duration data)[done manually, despicable I know]
+#filtering for the most prominent species, top 5 species with the most bloom beginning data [done manually, despicable I know]
 #calCounts <- merge(flower_counts, caList, by = intersect("scrubbed_species_binomial","scrubbed_species_binomial"))
 mostPopularSpeciesBeginning <- c("Acer saccharinum", "Prunus americana", "Taraxacum officinale", "Shepherdia argentea")
 #mostPopularSpeciesDuration <- c("Diospyros lycioides", "Dodonaea viscosa", "Prunus armeniaca")
 )
 
-#Filtering by flowering start and duration data
+#Filtering by flowering start data
 FloraBloomStart <- BIEN_trait_traitbyspecies(mostPopularSpeciesBeginning,  "plant flowering begin") 
 #FloraBloomDuration <- BIEN_trait_traitbyspecies(mostPopularSpeciesDuration, "plant flowering duration" ) 
 
-FloraBloomStart
+FloraBloomStart #checking data type
 #FloraBloomDuration
 
 
 #### plotting the frequency of bloom occurences vs months and data analysis -> making figures -----------------------------------------------------------------------
     #figure keeps looking bad
-bienBlooms <- BIEN_trait_traitbyspecies(usList$scrubbed_species_binomial,"plant flowering begin")
-bienBlooms %>% add_count(scrubbed_species_binomial) 
-plot(bienBlooms$n, bienBlooms$trait_value)
+bienBlooms <- BIEN_trait_traitbyspecies(usList$scrubbed_species_binomial,"plant flowering begin") #filtering to only include the flowering data of US species
+bienBlooms %>% add_count(scrubbed_species_binomial) #attempted to add a count column to demonstrate frequencies [wouldn't work for some reason]
+plot(bienBlooms$n, bienBlooms$trait_value) #trial plot
 
 #[failed] plot(as.numeric(bienBlooms$trait_value), bienBooms$scrubbed_species_binomial, xlab = "", ylab = "")  #[WIP]
 
 #[gross] plot(bienBlooms$id, bienBlooms$trait_value, xlab = "US Species ID", ylab = "Bloom Month", main = paste("Flowering Distributions Throughout the Year"), xlim = 1)
 
 bloomFrequency <- hist(as.numeric(bienBlooms$trait_value), xlab = "Month of Bloom", main = "Frequency of Blooming North American Species")
+#realized a histogram would be the best depiction, with the x axis representing month and y axis number of occurences
 bloomFrequency
 
 #### Downloaded range maps and getting species data and then plotting!  ------------------------------------------
-floraRangeBloom <- BIEN_ranges_load_species(mostPopularSpeciesBeginning) 
+floraRangeBloom <- BIEN_ranges_load_species(mostPopularSpeciesBeginning) #downloaded the range maps specifically for the top 5 US species with the most data in BIEN
 
 
-#floraRangeDuration <- BIEN_ranges_load_species(mostPopularSpeciesDuration)
-
-
-#colorBloomStart <- c("red","green","yellow", "orange", "blue")[FloraBloomStart$scrubbed_species_binomial] 
 
 tmap_mode("plot")
 tmap_mode("view")
@@ -84,6 +82,36 @@ perennialRange
 
  class(floraRange)
 
+ ######## PRISM climate raster data, annual data + data for months 4-6 as they have the vast majority of bloom dates
+ 
+ 
+ #precipJanuary <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_01_bil.bil")
+ #plot(precipJanuary)
+ 
+ precipAnnual <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_annual_bil.bil")
+ plot(precipAnnual)
+ 
+ precipApril <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_04_bil.bil")
+ plot(precipApril)
+ 
+ precipMay <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_05_bil.bil")
+ plot(precipMay)
+ 
+ precipJune <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_06_bil.bil")
+ plot(precipJune)
+ 
+ meanTempAnnual <- raster("Z:/Project/PRISM_tmean_30yr_normal_4kmM2_all_bil/PRISM_tmean_30yr_normal_4kmM2_annual_bil.bil")
+ plot(meanTempAnnual)
+ 
+ tempApril <- raster("Z:/Project/PRISM_tmean_30yr_normal_4kmM2_all_bil/PRISM_tmean_30yr_normal_4kmM2_04_bil.bil")
+ plot(tempApril)
+ 
+ tempMay <- raster("Z:/Project/PRISM_tmean_30yr_normal_4kmM2_all_bil/PRISM_tmean_30yr_normal_4kmM2_05_bil.bil")
+ plot(tempMay)
+ 
+ tempJune <- raster("Z:/Project/PRISM_tmean_30yr_normal_4kmM2_all_bil/PRISM_tmean_30yr_normal_4kmM2_06_bil.bil")
+ plot(tempJune)
+ 
 #coverting new tmap into a raster restricted to contintental NA then comparing the bloom data with climate data through layered mapping
 annualFlowering <- rasterize(floraRangeBloom, meanTempAnnual)
 USPrecipBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1, title = "Species") +  tm_shape(precipAnnual) + tm_raster(alpha = 0.6, title = "Mean Precipitation 30 year normals", , palette = "Blues") + tm_basemap() 
@@ -93,44 +121,42 @@ USPrecipBlooms
 
 USTempBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1, title = "Species") + tm_shape(meanTempAnnual) + tm_raster(alpha = 0.33, title = "Mean Temperature 30 year normals (Celsius)") + tm_basemap()
 USTempBlooms
-
+#plotting the rasterized annual flowering vs the raster of 30 year national temperature normals
 tmaptools::palette_explorer()
 
 tempPerennial <- tm_shape(meanTempAnnual) + tm_raster(title = "Mean Temperature 30 year normals (Celsius)") + tm_shape(floraRangeBloom) + tm_polygons(alpha = 0.5, "MAP_COLORS") + tm_basemap()
 tempPerennial
-
+#mapping the temperature raster with the spatial polygons representing the species ranges [decided to map each plant range independently]
 precipPerennial <- tm_shape(precipAnnual) + tm_raster(title = "Mean Precipitation 30 year normals ") + tm_shape(floraRangeBloom) + tm_polygons(alpha = 0.5, "MAP_COLORS") + tm_basemap()
 precipPerennial
-
+#mapping the percipitation raster with the spatial polygons representing the species ranges  [decided to map each plant range independently]
 bloomTempPerennial <- tm_shape(floraRangeBloom) + tm_polygons("MAP_COLORS") + tm_shape(tempApril) + tm_raster(title = "Mean Temperature 30 year normals") + tm_shape(tempMay) + tm_raster(title = "Mean Temperature 30 year normals") + tm_shape(tempJune) + tm_raster(title = "Mean Temperature 30 year normals") + tm_basemap()
 bloomTempPerennial
+#attempted mapping of the species range with the rasters representing April thru June [scrapped too much data representing in a single figure]
 
-#attempt to loop through the layers of species ranges in order independently represent each range layer
-tmap_mode("view")
-speciesLayers ->  for(i in 1:4){
-  tm_shape(floraRangeBloom@polygons[i]) + tm_polygons()+}
+
+SilverMaple <- BIEN_ranges_load_species("Acer_saccharinum")
+AmericanPlum <- BIEN_ranges_load_species("Prunus_americana")
+SilverBuffaloBerry <- BIEN_ranges_load_species("Shepherdia_argentea")
+Dandelion <- BIEN_ranges_load_species("Taraxacum_officinale")
+
+perennialLayers <- tm_shape(SilverMaple) + tm_polygons(alpha = 0.5, col = "green") +  tm_layout(title = "Occurrences of Flowering Perennials in NA") + tm_shape(AmericanPlum) + tm_polygons(alpha =0.5, col = "purple") +
+            tm_shape(SilverBuffaloBerry) + tm_polygons(alpha = 0.5, col = "orange") + tm_shape(Dandelion) + tm_polygons(alpha = 0.5, col = "yellow")  
  tm_basemap()
-
- #trying to differentiate the layers
- perennialLayers <-  tm_shape(floraRangeBloom) + tm_polygons() + tm_facets(~floraRangeBloom@polygons) + tm_layout(title = "Occurrences of Flowering Perennials in NA", legend.show = TRUE, frame = TRUE)  + tm_basemap()
- perennialLayers
+#mapping the layers independently
  
- 
-#MayUSBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1) + tm_shape(precipMay) + tm_raster(alpha = 0.3) + tm_shape(tempMay) + tm_raster(alpha = 0.4) + tm_basemap()  
-#MayUSBlooms
+tmap_mode("plot")
+tmap_mode("view")
+perennialLayers
 
-#JuneUSBlooms <- tm_shape(annualFlowering) + tm_raster(alpha  =1) + tm_shape(precipJune) + tm_raster(alpha = 0.3) + tm_shape(tempJune) + tm_raster(alpha = 0.4) + tm_basemap()
-#JuneUSBlooms
-#scrapping duration analysis for now, not enough data recorded in BIEN with correlating range map for flowering durations
-#floraRangeDuration <- tm_shape(floraRangeDuration) + tm_polygons("MAP_COLORS", alpha = 0.2) + tm_layout(title = "Highest Occurences of Flowering Duration Data in Continental US") + tm_basemap()  
-                      
-#floraRangeDuration
+precipPerennial <- tm_shape(precipAnnual) +tm_raster(title = "Mean Precipitation 30 year normals", palette = "Reds")+ tm_shape(SilverMaple) + tm_polygons(alpha = 0.33, col = "green") +  tm_layout(title = "Occurrences of Flowering Perennials in NA") + tm_shape(AmericanPlum) + tm_polygons(alpha =0.33, col = "purple") +
+  tm_shape(SilverBuffaloBerry) + tm_polygons(alpha = 0.33, col = "orange") + tm_shape(Dandelion) + tm_polygons(alpha = 0.33, col = "yellow")
+precipPerennial
+#mapping the ranges independently plus temperature 30 year normals
+tempPerennial <- tm_shape(meanTempAnnual)  +tm_raster(title = "Average 30 year normals (Celsius)", palette = "Greens") + tm_shape(SilverMaple) + tm_polygons(alpha = 0.33, col = "green") +  tm_layout(title = "Occurrences of Flowering Perennials in NA") + tm_shape(AmericanPlum) + tm_polygons(alpha =0.33, col = "purple") +
+  tm_shape(SilverBuffaloBerry) + tm_polygons(alpha = 0.33, col = "orange") + tm_shape(Dandelion) + tm_polygons(alpha = 0.33, col = "yellow")
+tempPerennial
 
-#next step maybe mapping the above two together
-
-#attempting to map climate rasters vs flowering range and distributions
-precipDuration <- plot(precipAnnual, aes(floraRangeD)) + geom_polygon()
-precipDuration
 
 #######filtering by greatest occurrences of flowering [Interetesting findings, may include in discussions but too much datat to spatially analyze reasonably] -------------------------------------------------------
 mayBlooms <- filter(CalFlora, trait_value.x == 5)
@@ -146,69 +172,9 @@ juneBlooms <- filter(CalFlora, trait_value.x == 6)
 juneRange <- BIEN_ranges_load_species(juneBlooms$scrubbed_species_binomial)
   
 
-
-
-
-#########plotting distributions [Utilized a different method]-----------------------------------------------------
-
-
-
-tmap_mode("view")
-
-plot(floraRange)
-
-FloraDistribution <-  tm_shape(floraRange)  + tm_polygons() +tm_fill(col = "MAP_COLORS") + tm_borders() + tm_basemap()
-
-convertedRange <- st_as_sf(floraRange)
-FloraDistribution
-
-convertedRange 
-
-
-
-#lets try isolating the different polygons in the seasonal bloom data next time!
-  #another idea would be to generate centroids or dot representations for each spatial polygon using a for loop and mutate
-
- #max.count(floraRange@data$species)
-
- #FloweringPoints <- gCentroid(floraRange, byid = TRUE)
-  #  plot(FloweringPoints)
-  #attempt <- tm_shape(floraRange) + tm_polygons() + tm_fill() + tm_dots(FloweringPoints) + tm_basemap()
-  #attempt
-
- floweringStartCentroids <- gCentroid(floraRangeB, byid = TRUE)
  
  
  
-  ######## PRISM climate raster data, annual data + data for months 4-6 as they have the vast majority of bloom dates
-
-
-#precipJanuary <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_01_bil.bil")
-#plot(precipJanuary)
-
-precipAnnual <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_annual_bil.bil")
-plot(precipAnnual)
-
-precipApril <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_04_bil.bil")
-plot(precipApril)
-  
-precipMay <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_05_bil.bil")
-plot(precipMay)
-
-precipJune <- raster("Z:/Project/PRISM_ppt_30yr_normal_4kmM2_all_bil/PRISM_ppt_30yr_normal_4kmM2_06_bil.bil")
-plot(precipJune)
-
-meanTempAnnual <- raster("Z:/Project/PRISM_tmean_30yr_normal_4kmM2_all_bil/PRISM_tmean_30yr_normal_4kmM2_annual_bil.bil")
-plot(meanTempAnnual)
-
-tempApril <- raster("Z:/Project/PRISM_tmean_30yr_normal_4kmM2_all_bil/PRISM_tmean_30yr_normal_4kmM2_04_bil.bil")
-plot(tempApril)
-
-tempMay <- raster("Z:/Project/PRISM_tmean_30yr_normal_4kmM2_all_bil/PRISM_tmean_30yr_normal_4kmM2_05_bil.bil")
-plot(tempMay)
-
-tempJune <- raster("Z:/Project/PRISM_tmean_30yr_normal_4kmM2_all_bil/PRISM_tmean_30yr_normal_4kmM2_06_bil.bil")
-plot(tempJune)
 
 ##### Rasterize then plot! --------------------------------------------------------------------------------------
 
@@ -234,7 +200,7 @@ plot(floweringJune)
 annualFlowering <- rasterize(floraRangeBloom, meanTempAnnual)
 plot(annualFlowering)
 
-#plotting as matrices to be able to visually compare and it looks pretty sweet
+#plotting as matrices to be able to visually compare changes in average temperature and percipitation during the bloom season and it looks pretty sweet
 layout(matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE)) 
 plot(tempApril, main = "April Temperatures", cex = 1, axes = FALSE, box = FALSE) 
 plot(precipApril, main = "April Precipitation", cex = 1, axes= FALSE, box = FALSE)
@@ -255,12 +221,12 @@ plot(meanTempAnnual, main = "Annual Temperature", axes = FALSE, box = FALSE, , c
 plot(annualFlowering)
 
 
-### Thinking about using leaflet for interactive mapping maybe ------------------------------------------
-leaflet("UnitedStates")
+
 
 ###SCRAPPED--------------------------------------------------------
 
-
+### Thinking about using leaflet for interactive mapping maybe ------------------------------------------
+leaflet("UnitedStates")
 
 
 #CA <- BIEN_occurrence_state(country = "United States")
@@ -341,3 +307,68 @@ leaflet("UnitedStates")
 
 
 #CA<- coords2Polygons(data = California)
+
+#attempt to loop through the layers of species ranges in order independently represent each range layer
+#tmap_mode("view")
+#speciesLayers ->  for(i in 1:4){
+# tm_shape(floraRangeBloom@polygons[i]) + tm_polygons()+}
+# tm_basemap()
+
+#trying to differentiate the layers
+#perennialLayers <-  tm_shape(floraRangeBloom) + tm_polygons() + tm_facets(~floraRangeBloom@polygons) + tm_layout(title = "Occurrences of Flowering Perennials in NA", legend.show = TRUE, frame = TRUE)  + tm_basemap()
+#perennialLayers
+
+#sfRangeBlooms <- st_as_sf(floraRangeBloom) 
+# 
+
+#speciesLayers <- for(1 in 1:4){
+#   tm_shape(sfRangeBlooms[i]) + tm_polygons() +
+#}
+#+ tm_basemap()
+
+###### bad looking mapping attempts  ------------------------------------------------------------------------------------
+#mapping the ranges independently plus percipitation 30 year normals
+#MayUSBlooms <- tm_shape(annualFlowering) + tm_raster(alpha = 1) + tm_shape(precipMay) + tm_raster(alpha = 0.3) + tm_shape(tempMay) + tm_raster(alpha = 0.4) + tm_basemap()  
+#MayUSBlooms
+
+#JuneUSBlooms <- tm_shape(annualFlowering) + tm_raster(alpha  =1) + tm_shape(precipJune) + tm_raster(alpha = 0.3) + tm_shape(tempJune) + tm_raster(alpha = 0.4) + tm_basemap()
+#JuneUSBlooms
+#scrapping duration analysis for now, not enough data recorded in BIEN with correlating range map for flowering durations
+#floraRangeDuration <- tm_shape(floraRangeDuration) + tm_polygons("MAP_COLORS", alpha = 0.2) + tm_layout(title = "Highest Occurences of Flowering Duration Data in Continental US") + tm_basemap()  
+
+#floraRangeDuration
+
+#next step maybe mapping the above two together
+
+#attempting to map climate rasters vs flowering range and distributions
+#precipDuration <- plot(precipAnnual, aes(floraRangeD)) + geom_polygon()
+#precipDuration
+
+#########plotting distributions [Utilized a different method]-----------------------------------------------------
+
+
+
+#tmap_mode("view")
+
+#plot(floraRange)
+
+#FloraDistribution <-  tm_shape(floraRange)  + tm_polygons() +tm_fill(col = "MAP_COLORS") + tm_borders() + tm_basemap()
+
+#convertedRange <- st_as_sf(floraRange)
+#FloraDistribution
+
+#convertedRange 
+
+
+
+#lets try isolating the different polygons in the seasonal bloom data next time!
+#another idea would be to generate centroids or dot representations for each spatial polygon using a for loop and mutate
+
+#max.count(floraRange@data$species)
+
+#FloweringPoints <- gCentroid(floraRange, byid = TRUE)
+#  plot(FloweringPoints)
+#attempt <- tm_shape(floraRange) + tm_polygons() + tm_fill() + tm_dots(FloweringPoints) + tm_basemap()
+#attempt
+
+# floweringStartCentroids <- gCentroid(floraRangeB, byid = TRUE)
