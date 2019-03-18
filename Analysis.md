@@ -13,13 +13,13 @@ Using the [Botanical Information and Ecology Network](http://bien.nceas.ucsb.edu
 
 [Results]
 
-Interactive Maps
+<Interactive Maps>
 
 [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/rscript/SpeciesRangesand30yearTemperatureNormals.html)
 
 [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/rscript/SpeciesRangesand30yearPercipitationnormals.html)
 
-Static Maps
+<Static Maps>
 
 [Perennial Ranges]
 
@@ -27,7 +27,7 @@ Static Maps
 
 [Rasterized Species Ranges and Annual Percipitation Data]
 
-Figures
+<Figures>
 
 [Matrix of Percipitation and Temperature Changes during Bloom Season]
 
