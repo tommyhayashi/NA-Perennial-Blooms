@@ -15,20 +15,20 @@ Using the [Botanical Information and Ecology Network](http://bien.nceas.ucsb.edu
 
 -Interactive Maps-
 
-[Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/PerennialBlooms/SpeciesRangesand30yearTemperatureNormals.html)
+1. [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/PerennialBlooms/SpeciesRangesand30yearTemperatureNormals.html)
 
-[Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/PerennialBlooms/SpeciesRangesand30yearPercipitationnormals.html)
+2. [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/PerennialBlooms/SpeciesRangesand30yearPercipitationnormals.html)
 
 -Static Maps-
 
-[Perennial Ranges]
+1. [Perennial Ranges]
 
-[Rasterized Species Ranges and Annual Temperature Data]
+2. [Rasterized Species Ranges and Annual Temperature Data]
 
-[Rasterized Species Ranges and Annual Percipitation Data]
+3. [Rasterized Species Ranges and Annual Percipitation Data]
 
 -Figures-
 
-[Matrix of Percipitation and Temperature Changes during Bloom Season]
+1. [Matrix of Percipitation and Temperature Changes during Bloom Season]
 
-[Histogram depicting frequencies of Blooms in North American Species]
+2. [Histogram depicting frequencies of Blooms in North American Species]
