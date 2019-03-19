@@ -15,11 +15,11 @@ Using the [Botanical Information and Ecology Network](http://bien.nceas.ucsb.edu
 
 *-Interactive Maps-*
 
-1. [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
+ 1. [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
 
 An interactive map containing layers representing the ranges for the Silver Maple, American Plum, Silver Buffaloberry, and the common Dandelion. These ranges are mapped over 30 year annual temperature normals for the continental United States.
 
-2. [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
+ 2. [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
 
 An interactive map containing layers representing the ranges for the Silver Maple, American Plum, Silver Buffaloberry, and the common Dandelion. These ranges are mapped over 30 year annual precipitation normals for the continental United States.
 
@@ -39,11 +39,11 @@ This map depicts the rasterized North American species ranges from the BIEN data
 
 *-Figures-*
 
-Figure 1. ![Histogram depicting frequencies of Blooms in North American Species](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomFrequency.jpeg)
+__Figure 1__ ![Histogram depicting frequencies of Blooms in North American Species](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomFrequency.jpeg)
 
 Histogram depicting frequencies of blooms in North American species. Months are mapped along the x-axis and the frequency of blooms represents the y-axis.
 
-Figure 2. ![Matrix of Precipitation and Temperature Changes during Bloom Season](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomMonthsTemperaturePrecipitation30yearnormals.jpeg)
+__Figure 2__ ![Matrix of Precipitation and Temperature Changes during Bloom Season](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomMonthsTemperaturePrecipitation30yearnormals.jpeg)
 
 Matrix of precipitation and temperature changes during the bloom season, ranging from April to June. Shifts in temperature and precipitation highs and lows should be noted.
 
