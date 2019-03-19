@@ -26,20 +26,25 @@ An interactive map containing layers representing the ranges for the Silver Mapl
 *-Static Maps-*
 
 __Static 1__ ![Perennial Ranges](https://tommyhayashi.github.io/NA-Perennial-Blooms/PerennialOccurrences.jpeg)
+
 This map illustrates the massive ranges of the Dandelion, Silver Maple, Silver Buffaloberry, and American Plum. This static image attempts to demonstrate both the amount of shared cohabitation, and the sheer sizes of the species ranges.
 
 __Static 2__ ![Rasterized Species Ranges and Annual Temperature Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangeTemperature30yearNormals.jpeg)
+
 This map depicts the rasterized North American species ranges from the BIEN database layered over the annual 30 year temperature data normals from PRISM. 
 
 __Static 3__ ![Rasterized Species Ranges and Annual Percipitation Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangePrecipitation30yearNormals.jpeg)
+
 This map depicts the rasterized North American species ranges from the BIEN database layered over the annual 30 year percipitation data normals from PRISM.
 
 *-Figures-*
 
 Figure 1. ![Histogram depicting frequencies of Blooms in North American Species](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomFrequency.jpeg)
+
 Histogram depicting frequencies of blooms in North American species. Months are mapped along the x-axis and the frequency of blooms represents the y-axis.
 
 Figure 2. ![Matrix of Precipitation and Temperature Changes during Bloom Season](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomMonthsTemperaturePrecipitation30yearnormals.jpeg)
+
 Matrix of precipitation and temperature changes during the bloom season, ranging from April to June. Shifts in temperature and precipitation highs and lows should be noted.
 
 [Rscript](https://github.com/tommyhayashi/PerennialBlooms/blob/master/project.R)
