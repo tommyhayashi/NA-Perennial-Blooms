@@ -18,11 +18,11 @@ Next, I downloaded temperature and precipitation data from the [PRISM climate da
 *-Interactive Maps-*
 
  (1). [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
-
+![temp](https://tommyhayashi.github.io/NA-Perennial-Blooms/ScreenshotTemp.jpeg)
 An interactive map containing layers representing the ranges for the Silver Maple, American Plum, Silver Buffaloberry, and the common Dandelion. These ranges are mapped over 30-year annual temperature normals for the continental United States.
 
  (2). [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
-
+![precip](https://tommyhayashi.github.io/NA-Perennial-Blooms/ScreenshotPrecip.jpeg)
 An interactive map containing layers representing the ranges for the Silver Maple, American Plum, Silver Buffaloberry, and the common Dandelion. These ranges are mapped over 30-year annual precipitation normals for the continental United States.
 
 *-Static Maps-*
