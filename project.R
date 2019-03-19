@@ -75,9 +75,19 @@ plot(bienBlooms$n, bienBlooms$trait_value) #trial plot
 
 #[gross] plot(bienBlooms$id, bienBlooms$trait_value, xlab = "US Species ID", ylab = "Bloom Month", main = paste("Flowering Distributions Throughout the Year"), xlim = 1)
 
-bloomFrequency <- hist(as.numeric(bienBlooms$trait_value), xlab = "Month of Bloom", main = "Frequency of Blooming North American Species", freq = TRUE, col = )
+#trying to reorganize data to represent months as characters rather than numbers, suprisingly difficult because working with BIEN is weird
+bienMonthlyBlooms <- bienBlooms %>% plyr::mutate(as.numeric(trait_value), c("January" = 1, "February" = 2,"March" = 3, "April" = 4, "May" = 5, "June" = 6, "July" = 7,"August" = 8 ,"September" = 9,"October" = 10,"November" = 11,"December" = 12))
+
+bienBlooms$month<- recode_factor(bienBlooms$trait_value, '1' = "January", '2'= "February", '3' = "March", '4' = "April", '5' = "May", '6'= "June", '7' = "July", '8' = "August", '9' = "September", '10' = "October", '11' = "November", '12' = "December")
+#turns out it was unneeded
+
+
+
+#big money histogram
+x <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+bloomFrequency <- hist(as.numeric(bienBlooms$trait_value), xlab = "Month of Bloom", main = "Frequency of Blooming North American Species", freq = TRUE, col = "purple", labels = c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"), include.lowest = TRUE, breaks = x, xlim = range(x))
 #realized a histogram would be the best depiction, with the x axis representing month and y axis number of occurences
-bloomFrequency
+plot(bloomFrequency) 
 
 #### Downloaded range maps and getting species data and then plotting!  [first attempt, continued on later down] ------------------------------------------
 floraRangeBloom <- BIEN_ranges_load_species(mostPopularSpeciesBeginning) #downloaded the range maps specifically for the top 5 US species with the most data in BIEN
