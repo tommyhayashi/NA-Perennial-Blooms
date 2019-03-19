@@ -16,10 +16,13 @@ Using the [Botanical Information and Ecology Network](http://bien.nceas.ucsb.edu
 *-Interactive Maps-*
 
 1. [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
+
 An interactive map containing layers representing the ranges for the Silver Maple, American Plum, Silver Buffaloberry, and the common Dandelion. These ranges are mapped over 30 year annual temperature normals for the continental United States.
 
 2. [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
+
 An interactive map containing layers representing the ranges for the Silver Maple, American Plum, Silver Buffaloberry, and the common Dandelion. These ranges are mapped over 30 year annual precipitation normals for the continental United States.
+
 *-Static Maps-*
 
 __Static 1__ ![Perennial Ranges]
