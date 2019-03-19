@@ -16,26 +16,27 @@ Using the [Botanical Information and Ecology Network](http://bien.nceas.ucsb.edu
 *-Interactive Maps-*
 
 1. [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
+An interactive map containing layers representing the ranges for the Silver Maple, American Plum, Silver Buffaloberry, and the common Dandelion. These ranges are mapped over 30 year annual temperature normals for the continental United States.
 
 2. [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
-
+An interactive map containing layers representing the ranges for the Silver Maple, American Plum, Silver Buffaloberry, and the common Dandelion. These ranges are mapped over 30 year annual precipitation normals for the continental United States.
 *-Static Maps-*
 
-Static 1. ![Perennial Ranges]
+__Static 1__ ![Perennial Ranges]
 
-Static 2. ![Rasterized Species Ranges and Annual Temperature Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangeTemperature30yearNormals.jpeg)
-Rasterized Species Ranges and Annual 30 year Temperature Data normals
+__Static 2__ ![Rasterized Species Ranges and Annual Temperature Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangeTemperature30yearNormals.jpeg)
+This map depicts the rasterized North American species ranges from the BIEN database layered over the annual 30 year temperature data normals from PRISM. 
 
-Static 3. ![Rasterized Species Ranges and Annual Percipitation Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangePrecipitation30yearNormals.jpeg)
-Rasterized Species Ranges and Annual 30 year Percipitation Data normals
+__Static 3__ ![Rasterized Species Ranges and Annual Percipitation Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangePrecipitation30yearNormals.jpeg)
+This map depicts the rasterized North American species ranges from the BIEN database layered over the annual 30 year percipitation data normals from PRISM.
 
 *-Figures-*
 
 Figure 1. ![Histogram depicting frequencies of Blooms in North American Species](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomFrequency.jpeg)
-Histogram depicting frequencies of Blooms in North American Species
+Histogram depicting frequencies of blooms in North American species. Months are mapped along the x-axis and the frequency of blooms represents the y-axis.
 
 Figure 2. ![Matrix of Precipitation and Temperature Changes during Bloom Season](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomMonthsTemperaturePrecipitation30yearnormals.jpeg)
-Matrix of Precipitation and Temperature Changes during Bloom Season
+Matrix of precipitation and temperature changes during the bloom season, ranging from April to June. Shifts in temperature and precipitation highs and lows should be noted.
 
 [Rscript](https://github.com/tommyhayashi/PerennialBlooms/blob/master/project.R)
 
