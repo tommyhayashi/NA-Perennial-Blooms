@@ -13,34 +13,37 @@ Using the [Botanical Information and Ecology Network](http://bien.nceas.ucsb.edu
 
 ## [Results]
 
--Interactive Maps-
+*-Interactive Maps-*
 
-1. [Perennial Ranges and 30 year Temperature normals](/https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
+1. [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
 
-2. [Perennial Ranges and 30 year Percipiation normals](/https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
+2. [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
 
--Static Maps-
+*-Static Maps-*
 
-1. [Perennial Ranges]
+Static 1. ![Perennial Ranges]
 
-2. ![Rasterized Species Ranges and Annual Temperature Data](/https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangeTemperature30yearNormals.jpeg)
+Static 2. ![Rasterized Species Ranges and Annual Temperature Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangeTemperature30yearNormals.jpeg)
+Rasterized Species Ranges and Annual 30 year Temperature Data normals
 
-3. ![Rasterized Species Ranges and Annual Percipitation Data](/https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangePrecipitation30yearNormals.jpeg)
+Static 3. ![Rasterized Species Ranges and Annual Percipitation Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangePrecipitation30yearNormals.jpeg)
+Rasterized Species Ranges and Annual 30 year Percipitation Data normals
 
--Figures-
+*-Figures-*
 
-1. ![Histogram depicting frequencies of Blooms in North American Species](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomFrequency.jpeg)
+Figure 1. ![Histogram depicting frequencies of Blooms in North American Species](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomFrequency.jpeg)
+Histogram depicting frequencies of Blooms in North American Species
 
-2. ![Matrix of Precipitation and Temperature Changes during Bloom Season](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomMonthsTemperaturePrecipitation30yearnormals.jpeg)
-
+Figure 2. ![Matrix of Precipitation and Temperature Changes during Bloom Season](https://tommyhayashi.github.io/NA-Perennial-Blooms/BloomMonthsTemperaturePrecipitation30yearnormals.jpeg)
+Matrix of Precipitation and Temperature Changes during Bloom Season
 
 [Rscript](https://github.com/tommyhayashi/PerennialBlooms/blob/master/project.R)
 
 ## [Discussion and Analysis]
 
-The climate Figures generated interesting findings immediately. Firstly, the vast majority of species recorded within North America and particularly the continental US had seasonal blooms starting during the early summer or late spring and ending midsummer. _Figure 1_ contains the monthly blooming occurrences of plants found within the United States and illustrates that the greatest concentrations of bloomings occur between April and June. Additionally, two trends within climate temperature and precipitation could be identified during these blooming months, the matrix in _Figure 2_ demonstrates how precipitation highs and lows decrease after April, whereas temperature highs continually increase from April to June. Therefore, the increase in temperature and decrease in precipitation may indicate why bloom concentrations increase from April to June within North American species.
+The climate Figures generated interesting findings immediately. Firstly, the vast majority of species recorded within North America and particularly the continental US had seasonal blooms starting during the early summer or late spring and ending midsummer. __Figure 1__ contains the monthly blooming occurrences of plants found within the United States and illustrates that the greatest concentrations of bloomings occur between April and June. Additionally, two trends within climate temperature and precipitation could be identified during these blooming months, the matrix in __Figure 2__ demonstrates how precipitation highs and lows decrease after April, whereas temperature highs continually increase from April to June. Therefore, the increase in temperature and decrease in precipitation may indicate why bloom concentrations increase from April to June within North American species.
 
-The Interactive maps 1 and 2 demonstrate additional findings between the 30-year temperature and precipitation normalized averages with perennial ranges. The first noticeable difference between the species ranges is that the smallest species, the Dandelion, has the largest range. The reason for Taraxacum officinale’s comparatively large range has much to do with its smaller stature being easy to propagate across the nation and its quick maturity, growing only to a foot, requiring little nutrient investment. Additional findings related to the habitats which each species has noticeably evolved for, with the bigger perennials, American Plum, Silver Buffaloberry, and Silver Maple, all coexisting with similar ranges in the heart of the continental United States. However, differences can be noted between precipitation averages between the ranges of these larger perennial species. Most notably, the Silver Buffaloberry prefers dryer climates, whereas the ranges of the American Plum and Silver Maple extend into the _wetter South Eastern regions of the United States_. Finally, the static maps all further demonstrate the findings noted out of the interactive maps. 
+The __Interactive maps 1 and 2__ demonstrate additional findings between the 30-year temperature and precipitation normalized averages with perennial ranges. The first noticeable difference between the species ranges is that the smallest species, the Dandelion, has the largest range. The reason for Taraxacum officinale’s comparatively large range has much to do with its smaller stature being easy to propagate across the nation and its quick maturity, growing only to a foot, requiring little nutrient investment. Additional findings related to the habitats which each species has noticeably evolved for, with the bigger perennials, American Plum, Silver Buffaloberry, and Silver Maple, all coexisting with similar ranges in the heart of the continental United States. However, differences can be noted between precipitation averages between the ranges of these larger perennial species. Most notably, the Silver Buffaloberry prefers dryer climates, whereas the ranges of the American Plum and Silver Maple extend into the wetter South Eastern regions of the United States. Finally, the static maps all further demonstrate the findings noted out of the interactive maps. 
 
 ## [Significance]
 
