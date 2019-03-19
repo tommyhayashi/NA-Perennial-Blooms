@@ -25,7 +25,8 @@ An interactive map containing layers representing the ranges for the Silver Mapl
 
 *-Static Maps-*
 
-__Static 1__ ![Perennial Ranges]
+__Static 1__ ![Perennial Ranges](https://github.com/tommyhayashi/NA-Perennial-Blooms/blob/master/BloomFrequency.jpeg)
+This map illustrates the massive ranges of the Dandelion, Silver Maple, Silver Buffaloberry, and American Plum. This static image attempts to demonstrate both the amount of shared cohabitation, and the sheer sizes of the species ranges.
 
 __Static 2__ ![Rasterized Species Ranges and Annual Temperature Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangeTemperature30yearNormals.jpeg)
 This map depicts the rasterized North American species ranges from the BIEN database layered over the annual 30 year temperature data normals from PRISM. 
