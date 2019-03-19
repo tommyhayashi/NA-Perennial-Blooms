@@ -15,17 +15,17 @@ Using the [Botanical Information and Ecology Network](http://bien.nceas.ucsb.edu
 
 -Interactive Maps-
 
-1. [Perennial Ranges and 30 year Temperature normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
+1. [Perennial Ranges and 30 year Temperature normals](/https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearTemperatureNormals.html)
 
-2. [Perennial Ranges and 30 year Percipiation normals](https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
+2. [Perennial Ranges and 30 year Percipiation normals](/https://tommyhayashi.github.io/NA-Perennial-Blooms/SpeciesRangesand30yearPercipitationnormals.html)
 
 -Static Maps-
 
 1. [Perennial Ranges]
 
-2. ![Rasterized Species Ranges and Annual Temperature Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangeTemperature30yearNormals.jpeg)
+2. ![Rasterized Species Ranges and Annual Temperature Data](/https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangeTemperature30yearNormals.jpeg)
 
-3. ![Rasterized Species Ranges and Annual Percipitation Data](https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangePrecipitation30yearNormals.jpeg)
+3. ![Rasterized Species Ranges and Annual Percipitation Data](/https://tommyhayashi.github.io/NA-Perennial-Blooms/RasterRangePrecipitation30yearNormals.jpeg)
 
 -Figures-
 
